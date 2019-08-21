@@ -47,13 +47,10 @@ export default {
   name: 'Login',
   data () {
     return {
-      userName: '',
-      password: '',
       form: {
         userName: '',
         password: ''
       },
-      foods: [{ text: 'Select One', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
       show: true
     }
   },
