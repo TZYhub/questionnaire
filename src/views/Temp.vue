@@ -1,67 +1,93 @@
 <template>
     <div>
-      <div class="text-left">
-        <b-link to="/home">返回</b-link>
-      </div>
-      <!--展示添加的列表-->
-      <div>
-          <div v-for="(item,index) in questionList" :key="index">
-            <b-input-group class="mb-2">
-              <span>{{index+1}}</span>
-              <b-form-input v-model="item.questionTitle"></b-form-input>
-            </b-input-group>
-            <div v-if="item.questionType === '1'">
-              <div v-for="(questionItem,itemIndex) in item.questionItemList" :key="itemIndex">
-                <b-input-group class="mb-2">
-                  <b-input-group-prepend is-text>
-                    <input type="radio" aria-label="Checkbox for following text input">
-                  </b-input-group-prepend>
-                  <b-form-input aria-label="Text input with checkbox" v-model="item.questionItemList[itemIndex]"></b-form-input>
-                </b-input-group>
-              </div>
-              <button @click="addItem(index)">新增一个选项</button>
-            </div>
-            <div v-else-if="item.questionType === '2'">
-              <div v-for="(questionItem,itemIndex) in item.questionItemList" :key="itemIndex">
-                <b-input-group class="mb-2">
-                  <b-input-group-prepend is-text>
-                    <input type="checkbox" aria-label="Checkbox for following text input">
-                  </b-input-group-prepend>
-                  <b-form-input aria-label="Text input with checkbox" v-model="item.questionItemList[itemIndex]"></b-form-input>
-                </b-input-group>
-              </div>
-              <button @click="addItem(index)">新增一个选项</button>
-            </div>
-            <div v-else-if="item.questionType === '3'">
-              <b-form-textarea
-                id="textarea"
-                rows="3"
-                max-rows="6"
-              ></b-form-textarea>
-            </div>
-
-          </div>
-      </div>
-      <div class="add-box">
-        <p class="qu-type" v-if="isAdding">
-          <button @click="addType('1')">单选题</button>
-          <button @click="addType('2')">多选题</button>
-          <button @click="addType('3')">文本题</button>
-        </p>
-
-        <b-button  variant="danger" @click="isAdding = !isAdding;">
-          + 添加问题
-        </b-button>
-      </div>
-      <footer>
-        <div>
-          <label>问卷截止日期</label>
+      <div class="col-6 offset-3 t1">
+        <div class="col-2 t1">
+          <ul>
+            <li>
+              <b-button class="t2" v-b-popover.hover="''" title="单选题" variant="outline-secondary">单选题</b-button>
+            </li>
+            <li>
+              <b-button class="t2" v-b-popover.hover="''" title="多选题" variant="outline-secondary">多选题</b-button>
+            </li>
+            <li>
+              <b-button class="t2" v-b-popover.hover="''" title="填空题" variant="outline-secondary">填空题</b-button>
+            </li>
+          </ul>
         </div>
-        <div>
-          <button @click="saveQuestionnaire()">保存问卷</button>
-          <button>发布问卷</button>
-        </div>
-      </footer>
+        <div class="col-10 t1"></div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <!--<div class="text-left">-->
+        <!--<b-link to="/home">返回</b-link>-->
+      <!--</div>-->
+      <!--&lt;!&ndash;展示添加的列表&ndash;&gt;-->
+      <!--<div>-->
+          <!--<div v-for="(item,index) in questionList" :key="index">-->
+            <!--<b-input-group class="mb-2">-->
+              <!--<span>{{index+1}}</span>-->
+              <!--<b-form-input v-model="item.questionTitle"></b-form-input>-->
+            <!--</b-input-group>-->
+            <!--<div v-if="item.questionType === '1'">-->
+              <!--<div v-for="(questionItem,itemIndex) in item.questionItemList" :key="itemIndex">-->
+                <!--<b-input-group class="mb-2">-->
+                  <!--<b-input-group-prepend is-text>-->
+                    <!--<input type="radio" aria-label="Checkbox for following text input">-->
+                  <!--</b-input-group-prepend>-->
+                  <!--<b-form-input aria-label="Text input with checkbox" v-model="item.questionItemList[itemIndex]"></b-form-input>-->
+                <!--</b-input-group>-->
+              <!--</div>-->
+              <!--<button @click="addItem(index)">新增一个选项</button>-->
+            <!--</div>-->
+            <!--<div v-else-if="item.questionType === '2'">-->
+              <!--<div v-for="(questionItem,itemIndex) in item.questionItemList" :key="itemIndex">-->
+                <!--<b-input-group class="mb-2">-->
+                  <!--<b-input-group-prepend is-text>-->
+                    <!--<input type="checkbox" aria-label="Checkbox for following text input">-->
+                  <!--</b-input-group-prepend>-->
+                  <!--<b-form-input aria-label="Text input with checkbox" v-model="item.questionItemList[itemIndex]"></b-form-input>-->
+                <!--</b-input-group>-->
+              <!--</div>-->
+              <!--<button @click="addItem(index)">新增一个选项</button>-->
+            <!--</div>-->
+            <!--<div v-else-if="item.questionType === '3'">-->
+              <!--<b-form-textarea-->
+                <!--id="textarea"-->
+                <!--rows="3"-->
+                <!--max-rows="6"-->
+              <!--&gt;</b-form-textarea>-->
+            <!--</div>-->
+
+          <!--</div>-->
+      <!--</div>-->
+      <!--<div class="add-box">-->
+        <!--<p class="qu-type" v-if="isAdding">-->
+          <!--<button @click="addType('1')">单选题</button>-->
+          <!--<button @click="addType('2')">多选题</button>-->
+          <!--<button @click="addType('3')">文本题</button>-->
+        <!--</p>-->
+
+        <!--<b-button  variant="danger" @click="isAdding = !isAdding;">-->
+          <!--+ 添加问题-->
+        <!--</b-button>-->
+      <!--</div>-->
+      <!--<footer>-->
+        <!--<div>-->
+          <!--<label>问卷截止日期</label>-->
+        <!--</div>-->
+        <!--<div>-->
+          <!--<button @click="saveQuestionnaire()">保存问卷</button>-->
+          <!--<button>发布问卷</button>-->
+        <!--</div>-->
+      <!--</footer>-->
     </div>
 </template>
 
@@ -114,5 +140,19 @@ export default {
 </script>
 
 <style scoped>
-
+.t1{
+  border:1px solid red;
+  height: 500px;
+  float:left;
+  padding: 5px;
+}
+.t2{
+  margin:3px;
+  width: 100%;
+}
+ul{
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
 </style>
