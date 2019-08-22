@@ -1,20 +1,50 @@
 <template>
     <div>
       <div class="col-6 offset-3 t1">
-        <div class="col-2 t1">
+        <div class="col-2 t2">
           <ul>
             <li>
-              <b-button class="t2" v-b-popover.hover="''" title="单选题" variant="outline-secondary">单选题</b-button>
+              <b-button class="t3" v-b-popover.hover="''" title="单选题" variant="outline-secondary">单选题</b-button>
             </li>
             <li>
-              <b-button class="t2" v-b-popover.hover="''" title="多选题" variant="outline-secondary">多选题</b-button>
+              <b-button class="t3" v-b-popover.hover="''" title="多选题" variant="outline-secondary">多选题</b-button>
             </li>
             <li>
-              <b-button class="t2" v-b-popover.hover="''" title="填空题" variant="outline-secondary">填空题</b-button>
+              <b-button class="t3" v-b-popover.hover="''" title="填空题" variant="outline-secondary">填空题</b-button>
             </li>
           </ul>
         </div>
-        <div class="col-10 t1"></div>
+        <div class="col-10 t2">
+          <div class="t4">
+            <p class="left">问卷标题</p>
+            <p class="left">描述</p>
+          </div>
+          <ul>
+            <li>
+              <div class="col-1 t5">
+                <p class="center">1</p>
+              </div>
+              <div class="col-11 t5">
+                <p class="left">题目描述</p>
+                <p class="left">选项1</p>
+                <p class="left">选项2</p>
+              </div>
+            </li>
+            <li>
+              <div class="col-1 t5">
+                <p class="center">2</p>
+              </div>
+              <div class="col-11 t5">
+                <p class="left">题目描述</p>
+                <p class="left">选项1</p>
+                <p class="left">选项2</p>
+              </div>
+            </li>
+          </ul>
+          <div class="t4">
+            <b-button>保存并发布</b-button>
+          </div>
+        </div>
       </div>
 
 
@@ -143,16 +173,38 @@ export default {
 .t1{
   border:1px solid red;
   height: 500px;
-  float:left;
-  padding: 5px;
+  padding: 0px;
 }
 .t2{
-  margin:3px;
+  border:1px solid red;
+  padding: 0px;
+  float:left;
+  min-height: 400px;
+}
+.t3{
   width: 100%;
+  margin-top: 3px;
+}
+.t4{
+  clear: both;
+  border:1px solid red;
+  width: 100%;
+  min-height: 100px;
+}
+.t5{
+  float:left;
+  border:1px solid red;
+}
+.center{
+  text-align:center;
+}
+.left{
+  text-align:left;
 }
 ul{
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
+
 </style>
